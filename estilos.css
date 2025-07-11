@@ -1,0 +1,225 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+header {
+    background-color: #111;
+    padding: 20px;
+}
+img.logo {
+    width: 200px;
+    height: auto;
+}
+h1 {
+    color: #d4af37;
+    font-size: 3em;
+    margin: 0.5em 0;
+}
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 20px;
+}
+.producto {
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 0 10px #d4af37;
+}
+.producto img {
+    width: 100%;
+    border-radius: 8px;
+}
+.producto h3 {
+    color: #d4af37;
+    margin-top: 10px;
+}
+.producto p {
+    font-size: 0.9em;
+    color: #ccc;
+}
+footer {
+    background-color: #111;
+    padding: 10px;
+    font-size: 0.8em;
+    color: #888;
+}
+
+
+nav.menu {
+    background-color: #111;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(212, 175, 55, 0.3);
+}
+
+nav.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav.menu li {
+    margin: 0 15px;
+}
+
+nav.menu a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+nav.menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #d4af37;
+}
+button.comprar, .pedido button {
+    background-color: #d4af37;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+button.comprar:hover, .pedido button:hover {
+    background-color: #fff;
+    color: #111;
+    box-shadow: 0 0 10px #d4af37;
+}
+
+.testimonios {
+    background-color: #111;
+    padding: 40px 20px;
+}
+.testimonio {
+    margin: 20px auto;
+    max-width: 600px;
+    background: #222;
+    padding: 20px;
+    border-left: 5px solid #d4af37;
+    border-radius: 10px;
+    color: #eee;
+}
+
+.pedido {
+    background-color: #000;
+    padding: 40px 20px;
+}
+.pedido form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pedido input, .pedido textarea {
+    width: 90%;
+    max-width: 500px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #111;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    nav.menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .productos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .producto {
+        width: 90%;
+    }
+
+    .iconos-redes {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding: 10px 0;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body.modo-claro {
+    background-color: #fff;
+    color: #000;
+}
+
+body.modo-claro header,
+body.modo-claro footer,
+body.modo-claro .testimonios {
+    background-color: #eee;
+    color: #000;
+}
+
+body.modo-claro nav.menu {
+    background-color: #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.modo-claro nav.menu a {
+    color: #444;
+}
+
+body.modo-claro nav.menu a:hover {
+    color: #000;
+    text-shadow: none;
+}
+
+body.modo-claro .producto {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px #bbb;
+}
+
+body.modo-claro .producto h3 {
+    color: #333;
+}
+
+body.modo-claro .producto p {
+    color: #555;
+}
+
+body.modo-claro .testimonio {
+    background-color: #fafafa;
+    color: #222;
+    border-left: 5px solid #999;
+}
+
+body.modo-claro .pedido {
+    background-color: #f8f8f8;
+}
+
+body.modo-claro .pedido input,
+body.modo-claro .pedido textarea {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+}
