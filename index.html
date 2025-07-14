@@ -1417,22 +1417,14 @@
             if (formulario) {
                 formulario.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
+
                     const nombre = document.getElementById('nombre').value.trim();
                     const telefono = document.getElementById('telefono').value.trim();
 
-                    if (!nombre || !telefono) {
-                        alert('Por favor completa todos los campos.');
-                        return;
-                    }
-
+                    // No mostrar alertas, solo redirigir si los campos existen
                     const mensaje = `Hola PulserArte, soy ${nombre}. Me gustaría realizar un pedido. Este es mi número de WhatsApp: ${telefono}`;
                     const urlWhatsapp = `https://wa.me/573162283951?text=${encodeURIComponent(mensaje)}`;
                     window.open(urlWhatsapp, '_blank');
-
-                    crearConfeti();
-                    formulario.reset();
-                    alert('¡Gracias por tu interés! Serás redirigido a WhatsApp para continuar el pedido.');
                 });
             }
         }
