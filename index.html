@@ -373,8 +373,9 @@
 
         .contenedor-productos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
         }
 
         .producto {
@@ -384,7 +385,9 @@
             box-shadow: var(--sombra);
             transition: var(--transicion);
             position: relative;
-            perspective: 1000px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         body.modo-noche .producto {
@@ -397,69 +400,60 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
-        .producto-contenedor {
-            position: relative;
+        .producto-imagen-contenedor {
             width: 100%;
-            height: 18rem;
-            transition: transform 0.8s;
-        }
-
-        .producto-frente, .producto-detras {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            height: 250px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .producto-detras {
-            background: var(--color-primario);
-            color: var(--color-secundario);
-            border-radius: var(--radio-borde);
-        }
-
-        .producto img {
-            width: 80%;
-            height: auto;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            transition: var(--transicion);
+        .producto-imagen {
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
             filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
         }
 
-        .producto h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            color: var(--color-primario);
-            text-align: center;
+        .producto:hover .producto-imagen {
+            transform: scale(1.05);
         }
 
-        .producto-detras h3 {
-            color: var(--color-secundario);
+        .producto-info {
+            padding: 1.5rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .producto h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-primario);
         }
 
         .producto p {
-            text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             font-size: 0.95rem;
+            color: var(--color-texto);
         }
 
-        .producto-detras p {
-            color: var(--color-secundario);
+        body.modo-noche .producto p {
+            color: var(--color-texto-claro);
         }
 
         .precio {
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--color-primario);
-            margin-bottom: 1rem;
-        }
-
-        .producto-detras .precio {
-            color: var(--color-secundario);
+            margin: 1rem 0;
         }
 
         /* Sección de testimonios mejorada */
@@ -885,6 +879,35 @@
             flex-wrap: wrap;
         }
 
+        /* Modal de imagen ampliada */
+        #modalImagen {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        #imagenAmpliada {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: var(--radio-borde);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        #imagenAmpliada.zoom {
+            transform: scale(1.5);
+            cursor: zoom-in;
+        }
+
         /* Responsive design mejorado */
         @media (max-width: 768px) {
             .seccion {
@@ -908,6 +931,11 @@
                 width: 100%;
                 justify-content: center;
             }
+            
+            .producto-imagen-contenedor {
+                height: 220px;
+                padding: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -915,12 +943,16 @@
                 min-height: 500px;
             }
             
-            .producto-contenedor {
-                height: 16rem;
+            .producto-imagen-contenedor {
+                height: 180px;
             }
             
             .testimonio {
                 padding: 1.5rem;
+            }
+            
+            .producto-info {
+                padding: 1rem;
             }
         }
     </style>
@@ -965,42 +997,52 @@
             <h2 id="titulo-productos" class="titulo-seccion">Nuestras Joyas Exclusivas</h2>
             <div class="contenedor-productos">
                 <article class="producto" itemscope itemtype="https://schema.org/Product">
-                    <div class="producto-contenedor">
-                        <div class="producto-detras">
-                            <a class="zoomable" href="#">
-                                <img src="imagenes/g.png" alt="Pulsera Religiosa" style="width: 100%; height: 100%; object-fit: cover;">
-                                <h3 style="font-size: 1.2rem; margin: 0.5rem 0;">Pulsera Religiosa</h3>
-                            </a>
-                        </div>
+                    <div class="producto-imagen-contenedor">
+                        <a class="zoomable" href="#" aria-label="Ampliar imagen de Pulsera Religiosa">
+                            <img src="imagenes/g.png" alt="Pulsera Religiosa" class="producto-imagen" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="producto-info">
+                        <h3 itemprop="name">Pulsera Religiosa</h3>
+                        <p itemprop="description">Pulsera artesanal con detalles religiosos en oro laminado.</p>
+                        <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                            <span itemprop="priceCurrency" content="COP">$</span>
+                            <span itemprop="price" content="89900">89.900</span>
+                        </span>
                     </div>
                 </article>
                 
                 <article class="producto" itemscope itemtype="https://schema.org/Product">
-                    <div class="producto-contenedor">
-                        <div class="producto-detras">
-                            <a class="zoomable" href="#">
-                                <img src="imagenes/h.png" alt="Manilla Éclipse" />
-                                <h3>Manilla Éclipse</h3>
-                            </a>
-                        </div>
+                    <div class="producto-imagen-contenedor">
+                        <a class="zoomable" href="#" aria-label="Ampliar imagen de Manilla Éclipse">
+                            <img src="imagenes/h.png" alt="Manilla Éclipse" class="producto-imagen" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="producto-info">
+                        <h3 itemprop="name">Manilla Éclipse</h3>
+                        <p itemprop="description">Elegante manilla unisex con diseño moderno y ajustable.</p>
+                        <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                            <span itemprop="priceCurrency" content="COP">$</span>
+                            <span itemprop="price" content="75900">75.900</span>
+                        </span>
                     </div>
                 </article>
                 
                 <article class="producto" itemscope itemtype="https://schema.org/Product">
-                    <div class="producto-contenedor">
-                        <div class="producto-detras">
-                            <a class="zoomable" href="#">
-                                <img src="imagenes/i.png" alt="Pulsera perzonalizadas" />
-                                <h3>Pulsera Perzonalizadas</h3>
-                            </a>
-                        </div>
+                    <div class="producto-imagen-contenedor">
+                        <a class="zoomable" href="#" aria-label="Ampliar imagen de Pulsera Personalizada">
+                            <img src="imagenes/i.png" alt="Pulsera Personalizada" class="producto-imagen" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="producto-info">
+                        <h3 itemprop="name">Pulsera Personalizada</h3>
+                        <p itemprop="description">Crea tu diseño único con iniciales o mensajes especiales.</p>
+                        <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                            <span itemprop="priceCurrency" content="COP">$</span>
+                            <span itemprop="price" content="99900">99.900</span>
+                        </span>
                     </div>
                 </article>
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="imagenes/catalogo.pdf" download class="btn btn-secundario" style="font-size: 1rem;">
-                    <i class="fas fa-file-download" style="margin-right: 0.5rem;"></i> Descargar Catálogo PDF
-                </a>
             </div>
         </div>
     </section>
@@ -1060,7 +1102,7 @@
                     <h3>Sobre Nosotros</h3>
                     <p>PulserArte es una joyería artesanal especializada en diseños únicos y personalizados que realzan tu belleza natural.</p>
                     <div class="redes-sociales">
-                       <a href="https://www.instagram.com/pulserartewf/?igsh=MXVqOGJ3amNieTBocw%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/pulserartewf/?igsh=MXVqOGJ3amNieTBocw%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/tucuenta" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://wa.me/573162283951" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
@@ -1107,51 +1149,10 @@
         </div>
     </div>
 
-    <!-- Modales legales (ocultos inicialmente) -->
-    <div id="modal-politica-privacidad" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titulo-modal-privacidad" hidden>
-        <div class="modal-contenido">
-            <h2 id="titulo-modal-privacidad">Política de Privacidad</h2>
-            <div class="modal-texto">
-                <!-- Contenido detallado de la política de privacidad -->
-                <p>En PulserArte Joyería, nos comprometemos a proteger tu privacidad. Esta política explica cómo recopilamos, usamos y protegemos tu información personal.</p>
-                <h3>Información que recopilamos</h3>
-                <p>Recopilamos información que nos proporcionas directamente cuando realizas un pedido, te registras en nuestro sitio o te comunicas con nosotros. Esto puede incluir tu nombre, dirección de correo electrónico, número de teléfono, dirección de envío y detalles de pago.</p>
-                <h3>Cómo usamos tu información</h3>
-                <p>Utilizamos tu información para procesar pedidos, mejorar nuestros servicios, comunicarnos contigo sobre tu pedido y enviarte información sobre nuestros productos y promociones (si nos has dado tu consentimiento).</p>
-                <h3>Protección de datos</h3>
-                <p>Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales contra el acceso no autorizado, alteración, divulgación o destrucción.</p>
-                <h3>Tus derechos</h3>
-                <p>Tienes derecho a acceder, rectificar o eliminar tus datos personales. También puedes oponerte al tratamiento de tus datos o solicitar la limitación de su tratamiento.</p>
-                <p>Para ejercer estos derechos o para cualquier pregunta sobre nuestra política de privacidad, contáctanos en info@pulserarte.com.</p>
-            </div>
-            <button class="btn btn-primario cerrar-modal">Cerrar</button>
-        </div>
-    </div>
-
     <!-- Modal de imagen ampliada -->
-    <div id="modalImagen" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
-        <img id="imagenAmpliada" src="" alt="Vista ampliada" style="max-width:90%; max-height:90%; border-radius:12px; box-shadow:0 0 20px rgba(212,175,55,0.7);">
+    <div id="modalImagen" aria-hidden="true" role="dialog" aria-label="Vista ampliada de producto">
+        <img id="imagenAmpliada" src="" alt="Vista ampliada">
     </div>
-
-    <script>
-      document.querySelectorAll('.zoomable').forEach(link => {
-          link.style.cursor = 'zoom-in';
-          link.addEventListener('click', function(e) {
-              e.preventDefault();
-              // Buscar la imagen dentro del enlace
-              const img = this.querySelector('img');
-              if (!img) return;
-              const modal = document.getElementById('modalImagen');
-              const imagenAmpliada = document.getElementById('imagenAmpliada');
-              imagenAmpliada.src = img.src;
-              modal.style.display = 'flex';
-          });
-      });
-
-      document.getElementById('modalImagen').addEventListener('click', function() {
-          this.style.display = 'none';
-      });
-    </script>
 
     <!-- Scripts optimizados -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -1175,6 +1176,7 @@
             iniciarFormulario();
             iniciarModales();
             iniciarEfectoEscritura();
+            iniciarZoomImagenes();
         }
 
         // Menú flotante accesible
@@ -1194,7 +1196,7 @@
 
             // Cerrar menú al hacer clic fuera
             document.addEventListener('click', function(e) {
-                if (!menuBtn.contains(e.target)) {
+                if (!menuBtn.contains(e.target) && !menuItems.contains(e.target)) {
                     menuBtn.setAttribute('aria-expanded', 'false');
                     menuItems.classList.remove('active');
                     menuBtn.querySelector('i').classList.remove('fa-times');
@@ -1285,7 +1287,7 @@
                     control.classList.toggle('activo', i === index);
                     control.setAttribute('aria-label', `Mostrar testimonio ${i + 1}`);
                 });
-                //hl
+                
                 // Reiniciar intervalo
                 reiniciarIntervalo();
             }
@@ -1423,6 +1425,51 @@
                     window.open(urlWhatsapp, '_blank');
                 });
             }
+        }
+
+        // Función de zoom mejorada para imágenes
+        function iniciarZoomImagenes() {
+            document.querySelectorAll('.zoomable').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const img = this.querySelector('img');
+                    if (!img) return;
+                    
+                    const modal = document.getElementById('modalImagen');
+                    const imagenAmpliada = document.getElementById('imagenAmpliada');
+                    
+                    // Cargar imagen original sin escalar
+                    imagenAmpliada.src = img.src;
+                    imagenAmpliada.classList.remove('zoom');
+                    
+                    // Mostrar modal
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Alternar zoom al hacer clic en la imagen ampliada
+                    imagenAmpliada.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        this.classList.toggle('zoom');
+                    });
+                });
+            });
+
+            // Cerrar modal al hacer clic fuera
+            document.getElementById('modalImagen').addEventListener('click', function() {
+                this.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+
+            // Cerrar con tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('modalImagen');
+                    if (modal.style.display === 'flex') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
         }
 
         // Efecto de confeti mejorado
