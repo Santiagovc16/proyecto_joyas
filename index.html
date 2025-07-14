@@ -2,137 +2,1631 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>PulserArte Joyería</title>
-    <link rel="stylesheet" href="estilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulserArte Joyería | Joyas Artesanales de Calidad</title>
+    <meta name="description" content="Joyas artesanales de alta calidad. Manillas, collares y accesorios únicos con diseños exclusivos. Envíos a todo Colombia.">
+    <meta name="keywords" content="joyería, pulseras, collares, accesorios, oro laminado, joyas artesanales, regalos elegantes">
+    <meta name="author" content="PulserArte Joyería">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.pulserartejoyeria.com">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pulserartejoyeria.com/">
+    <meta property="og:title" content="PulserArte Joyería | Joyas que Encantan">
+    <meta property="og:description" content="Descubre nuestra colección de joyas artesanales únicas. Calidad y elegancia en cada pieza.">
+    <meta property="og:image" content="https://www.pulserartejoyeria.com/imagenes/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.pulserartejoyeria.com/">
+    <meta property="twitter:title" content="PulserArte Joyería | Joyas que Encantan">
+    <meta property="twitter:description" content="Descubre nuestra colección de joyas artesanales únicas. Calidad y elegancia en cada pieza.">
+    <meta property="twitter:image" content="https://www.pulserartejoyeria.com/imagenes/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imagenes/favicon.png">
+    
+    <!-- Preload de fuentes -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"></noscript>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-primario: #d4af37; /* Oro */
+            --color-secundario: #1a1a2e; /* Azul noche */
+            --color-terciario: #f8f1e5; /* Marfil */
+            --color-texto: #333333;
+            --color-texto-claro: #f0f0f0;
+            --color-fondo-claro: #ffffff;
+            --color-fondo-oscuro: #121212;
+            --color-bordes: rgba(212, 175, 55, 0.3);
+            --sombra: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --sombra-oscura: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --transicion: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --radio-borde: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-fondo-claro);
+            color: var(--color-texto);
+            overflow-x: hidden;
+            transition: var(--transicion);
+            line-height: 1.6;
+        }
+
+        body.modo-noche {
+            background-color: var(--color-fondo-oscuro);
+            color: var(--color-texto-claro);
+        }
+
+        /* Efecto de partículas mágicas - Versión mejorada para modo noche */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.modo-noche #particles-js {
+            opacity: 0.2;
+        }
+
+        /* Sistema de capas para mejor organización */
+        .capa-primaria {
+            position: relative;
+            z-index: 1;
+        }
+
+        .capa-secundaria {
+            position: relative;
+            z-index: 2;
+        }
+
+        .capa-terciaria {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Textos accesibles */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--color-primario);
+            text-decoration: none;
+            transition: var(--transicion);
+        }
+
+        a:hover {
+            color: var(--color-secundario);
+            text-decoration: underline;
+        }
+
+        body.modo-noche a:hover {
+            color: var(--color-primario);
+        }
+
+        /* Botones con mejor contraste */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radio-borde);
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transicion);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primario {
+            background-color: var(--color-primario);
+            color: var(--color-secundario);
+            box-shadow: var(--sombra);
+        }
+
+        .btn-primario:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: var(--color-primario);
+            border: 2px solid var(--color-primario);
+        }
+
+        .btn-secundario:hover {
+            background-color: var(--color-primario);
+            color: var(--color-secundario);
+        }
+
+        /* Menú flotante mejorado */
+        .menu-flotante {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .menu-btn {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: var(--color-primario);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            position: relative;
+            z-index: 2;
+            border: none;
+        }
+
+        .menu-btn i {
+            font-size: 1.3rem;
+            color: var(--color-secundario);
+            transition: var(--transicion);
+        }
+
+        .menu-items {
+            position: absolute;
+            bottom: 4rem;
+            right: 0;
+            width: 13rem;
+            background: var(--color-fondo-claro);
+            border-radius: var(--radio-borde);
+            padding: 1rem;
+            box-shadow: var(--sombra);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(1rem);
+            transition: var(--transicion);
+        }
+
+        body.modo-noche .menu-items {
+            background: var(--color-secundario);
+            box-shadow: var(--sombra-oscura);
+        }
+
+        .menu-items.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-items a {
+            display: flex;
+            align-items: center;
+            color: var(--color-texto);
+            text-decoration: none;
+            padding: 0.6rem;
+            margin: 0.3rem 0;
+            border-radius: calc(var(--radio-borde) / 2);
+            transition: var(--transicion);
+            font-weight: 600;
+        }
+
+        body.modo-noche .menu-items a {
+            color: var(--color-texto-claro);
+        }
+
+        .menu-items a i {
+            margin-right: 0.7rem;
+            width: 1.2rem;
+            text-align: center;
+        }
+
+        .menu-items a:hover {
+            background: var(--color-primario);
+            color: var(--color-secundario);
+            transform: translateX(-0.3rem);
+            text-decoration: none;
+        }
+
+        /* Hero section con mejor contraste */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(26, 26, 46, 0.7) 100%);
+        }
+
+        body.modo-noche .hero {
+            background: linear-gradient(135deg, rgba(18, 18, 18, 0.95) 0%, rgba(26, 26, 46, 0.8) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3') no-repeat center center/cover;
+            z-index: -2;
+            filter: brightness(0.6);
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 0 1.5rem;
+            max-width: 50rem;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 9rem;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
+            animation: brillo 3s infinite alternate;
+        }
+
+        @keyframes brillo {
+            from {
+                filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
+            }
+            to {
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 1));
+            }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .marca {
+            color: var(--color-primario);
+            position: relative;
+            display: inline-block;
+        }
+
+        .marca::after {
+            content: '';
+            position: absolute;
+            bottom: -0.3rem;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--color-primario);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .marca:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: var(--color-texto-claro);
+            opacity: 0.9;
+        }
+
+        /* Sección de productos mejorada */
+        .seccion {
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+
+        body.modo-noche .seccion {
+            background-color: var(--color-fondo-oscuro);
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 3rem;
+            color: var(--color-primario);
+            position: relative;
+        }
+
+        .titulo-seccion::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6rem;
+            height: 3px;
+            background: var(--color-primario);
+        }
+
+        .contenedor {
+            max-width: 75rem;
+            margin: 0 auto;
+        }
+
+        .contenedor-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 2.5rem;
+        }
+
+        .producto {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--radio-borde);
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            position: relative;
+            perspective: 1000px;
+        }
+
+        body.modo-noche .producto {
+            background: rgba(30, 30, 40, 0.95);
+            box-shadow: var(--sombra-oscura);
+        }
+
+        .producto:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .producto-contenedor {
+            position: relative;
+            width: 100%;
+            height: 18rem;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
+
+        .producto:hover .producto-contenedor {
+            transform: rotateY(180deg);
+        }
+
+        .producto-frente, .producto-detras {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .producto-detras {
+            transform: rotateY(180deg);
+            background: var(--color-primario);
+            color: var(--color-secundario);
+            border-radius: var(--radio-borde);
+        }
+
+        .producto img {
+            width: 80%;
+            height: auto;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            transition: var(--transicion);
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .producto h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-primario);
+            text-align: center;
+        }
+
+        .producto-detras h3 {
+            color: var(--color-secundario);
+        }
+
+        .producto p {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .producto-detras p {
+            color: var(--color-secundario);
+        }
+
+        .precio {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-primario);
+            margin-bottom: 1rem;
+        }
+
+        .producto-detras .precio {
+            color: var(--color-secundario);
+        }
+
+        /* Sección de testimonios mejorada */
+        .testimonios {
+            background: url('https://images.unsplash.com/photo-1519642918688-7e43b19245d8?ixlib=rb-4.0.3') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .testimonios::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 46, 0.85);
+        }
+
+        body.modo-noche .testimonios::before {
+            background: rgba(18, 18, 18, 0.9);
+        }
+
+        .contenedor-testimonios {
+            position: relative;
+            z-index: 1;
+        }
+
+        .carrusel-testimonios {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            margin: 3rem 0;
+            scrollbar-width: none;
+        }
+
+        .carrusel-testimonios::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonio {
+            min-width: 100%;
+            padding: 2rem;
+            scroll-snap-align: start;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radio-borde);
+            backdrop-filter: blur(10px);
+            margin: 0 0.7rem;
+            transition: var(--transicion);
+        }
+
+        body.modo-noche .testimonio {
+            background: rgba(40, 40, 60, 0.3);
+        }
+
+        .testimonio p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            position: relative;
+            color: var(--color-texto-claro);
+        }
+
+        .testimonio p::before, .testimonio p::after {
+            content: '"';
+            font-size: 1.8rem;
+            color: var(--color-primario);
+            opacity: 0.5;
+        }
+
+        .testimonio p::before {
+            margin-right: 0.3rem;
+        }
+
+        .testimonio p::after {
+            margin-left: 0.3rem;
+        }
+
+        .testimonio span {
+            font-weight: 600;
+            color: var(--color-primario);
+            display: block;
+            text-align: right;
+        }
+
+        .controles-carrusel {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            gap: 0.7rem;
+        }
+
+        .control {
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transicion);
+            border: none;
+        }
+
+        .control.activo {
+            background: var(--color-primario);
+            transform: scale(1.3);
+        }
+
+        /* Formulario mejorado */
+        .formulario-pedido {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: var(--radio-borde);
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+        }
+
+        body.modo-noche .formulario-pedido {
+            background: rgba(30, 30, 40, 0.95);
+            box-shadow: var(--sombra-oscura);
+        }
+
+        .grupo-formulario {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .grupo-formulario label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-primario);
+        }
+
+        .grupo-formulario input,
+        .grupo-formulario textarea,
+        .grupo-formulario select {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid var(--color-bordes);
+            border-radius: calc(var(--radio-borde) / 2);
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--color-texto);
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transicion);
+            font-size: 1rem;
+        }
+
+        body.modo-noche .grupo-formulario input,
+        body.modo-noche .grupo-formulario textarea,
+        body.modo-noche .grupo-formulario select {
+            background: rgba(40, 40, 50, 0.8);
+            color: var(--color-texto-claro);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .grupo-formulario input:focus,
+        .grupo-formulario textarea:focus,
+        .grupo-formulario select:focus {
+            outline: none;
+            border-color: var(--color-primario);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+
+        .grupo-formulario textarea {
+            min-height: 8rem;
+            resize: vertical;
+        }
+
+        /* Footer mejorado con información legal */
+        footer {
+            background-color: var(--color-secundario);
+            color: var(--color-texto-claro);
+            position: relative;
+            overflow: hidden;
+            padding-top: 4rem;
+        }
+
+        body.modo-noche footer {
+            background-color: var(--color-fondo-oscuro);
+        }
+
+        .olas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6rem;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23d4af37"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23d4af37"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,233.28-109.33C1190,13.75,1190,0,1200,0Z" fill="%23d4af37"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+        }
+
+        .contenido-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .columna-footer {
+            margin-bottom: 1.5rem;
+        }
+
+        .columna-footer h3 {
+            color: var(--color-primario);
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .columna-footer h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 2px;
+            background: var(--color-primario);
+        }
+
+        .columna-footer p, 
+        .columna-footer a {
+            margin-bottom: 0.8rem;
+            display: block;
+            color: var(--color-texto-claro);
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .columna-footer a:hover {
+            opacity: 1;
+            color: var(--color-primario);
+            text-decoration: none;
+            transform: translateX(5px);
+        }
+
+        .redes-sociales {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .redes-sociales a {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-primario);
+            font-size: 1.2rem;
+            transition: var(--transicion);
+        }
+
+        .redes-sociales a:hover {
+            background: var(--color-primario);
+            color: var(--color-secundario);
+            transform: translateY(-0.3rem) rotate(10deg);
+        }
+
+        .legal {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Efecto de confeti mejorado */
+        .confeti {
+            position: fixed;
+            width: 0.6rem;
+            height: 0.6rem;
+            background-color: var(--color-primario);
+            opacity: 0;
+            z-index: 9999;
+            animation: caer 5s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes caer {
+            0% {
+                transform: translateY(-100vh) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Pantalla de carga con mejor accesibilidad */
+        .carga {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-secundario);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        body.modo-noche .carga {
+            background: var(--color-fondo-oscuro);
+        }
+
+        .carga.oculto {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .anillo {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            border: 0.3rem solid transparent;
+            border-top-color: var(--color-primario);
+            animation: girar 1s linear infinite;
+            position: relative;
+        }
+
+        .anillo::before, .anillo::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 0.3rem solid transparent;
+        }
+
+        .anillo::before {
+            top: 0.3rem;
+            left: 0.3rem;
+            right: 0.3rem;
+            bottom: 0.3rem;
+            border-top-color: var(--color-primario);
+            animation: girar 2s linear infinite;
+        }
+
+        .anillo::after {
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            border-top-color: var(--color-primario);
+            animation: girar 3s linear infinite;
+        }
+
+        .texto-carga {
+            margin-top: 1.5rem;
+            color: var(--color-texto-claro);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        @keyframes girar {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Cookies y avisos legales */
+        .aviso-cookies {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-secundario);
+            color: var(--color-texto-claro);
+            padding: 1.5rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            border-top: 3px solid var(--color-primario);
+        }
+
+        body.modo-noche .aviso-cookies {
+            background: var(--color-fondo-oscuro);
+        }
+
+        .aviso-cookies.mostrar {
+            transform: translateY(0);
+        }
+
+        .contenedor-cookies {
+            max-width: 75rem;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .texto-cookies {
+            flex: 1;
+            min-width: min(100%, 50rem);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .texto-cookies a {
+            color: var(--color-primario);
+            font-weight: 600;
+        }
+
+        .botones-cookies {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive design mejorado */
+        @media (max-width: 768px) {
+            .seccion {
+                padding: 3rem 1rem;
+            }
+            
+            .formulario-pedido {
+                padding: 1.5rem;
+            }
+            
+            .contenido-footer {
+                grid-template-columns: 1fr;
+            }
+            
+            .aviso-cookies .contenedor-cookies {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .botones-cookies {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 500px;
+            }
+            
+            .producto-contenedor {
+                height: 16rem;
+            }
+            
+            .testimonio {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="menu">
-        <ul>
-            <li><a href="#" data-target="seccion-inicio">Inicio</a></li>
-            <li><a href="#" data-target="seccion-productos">Productos</a></li>
-            <li><a href="#" data-target="seccion-proximamente">Próximamente</a></li>
-            <li><a href="#" data-target="seccion-testimonios">Testimonios</a></li>
-            <li><a href="#" data-target="seccion-pedido">Pedido</a></li>
-            <li><a href="#" data-target="seccion-contacto">Contacto</a></li>
-        </ul>
-    </nav>
-    <div class="seccion-contenido" id="seccion-inicio">
-      <header id="inicio">
-        <div class="contenedor-inicio">
-          <img src="imagenes/Joyerialogo.png" alt="Logo PulserArte" class="logo">
-          <h1>Bienvenido a <span class="marca">PulserArte</span> Joyería</h1>
-          <p class="descripcion">Manillas de oro laminado desde <strong>$95.000</strong> — lujo accesible con estilo futurista.</p>
-          <p class="envios">📦 Envíos a todo el país</p>
-          <button id="modo-toggle" class="modo-toggle">🌞 Modo Día</button>
-        </div>
-      </header>
+    <!-- Pantalla de carga accesible -->
+    <div class="carga" aria-live="polite" aria-label="Cargando contenido">
+        <div class="anillo" aria-hidden="true"></div>
+        <p class="texto-carga">Cargando la magia de PulserArte...</p>
     </div>
 
-    <div class="seccion-contenido" id="seccion-productos">
-    <section id="productos" class="productos">
-        <div class="producto">
-            <img src="imagenes/g.png" alt="Manilla 1">
-            <h3>Manilla Corona</h3>
-            <p>Diseño elegante en oro laminado, ideal para cualquier ocasión.</p>
-            <span class="precio">$95.000</span>
-            <button class="comprar">Comprar</button>
+    <!-- Efecto de partículas para modo noche -->
+    <div id="particles-js" aria-hidden="true"></div>
+
+    <!-- Menú flotante accesible -->
+    <div class="menu-flotante">
+        <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu-items" aria-label="Menú principal">
+            <i class="fas fa-gem"></i>
+        </button>
+        <div class="menu-items" id="menu-items" role="menu">
+            <a href="#" data-target="hero" role="menuitem"><i class="fas fa-home"></i> Inicio</a>
+            <a href="#" data-target="productos" role="menuitem"><i class="fas fa-ring"></i> Productos</a>
+            <a href="#" data-target="testimonios" role="menuitem"><i class="fas fa-comment"></i> Testimonios</a>
+            <a href="#" data-target="pedido" role="menuitem"><i class="fas fa-shopping-bag"></i> Pedido</a>
+            <button id="modo-toggle" role="menuitem"><i class="fas fa-moon"></i> Modo Noche</button>
         </div>
-        <div class="producto">
-            <img src="imagenes/h.png" alt="Manilla 2">
-            <h3>Manilla Éclipse</h3>
-            <p>Inspiración galáctica con acabado brillante.</p>
-            <span class="precio">$95.000</span>
-            <button class="comprar">Comprar</button>
+    </div>
+
+    <!-- Hero section con ARIA -->
+    <section class="hero" id="hero" aria-labelledby="titulo-hero">
+        <div class="hero-content">
+            <img src="imagenes/Joyerialogo.png" alt="Logo PulserArte" class="logo" width="150" height="150">
+            <h1 id="titulo-hero">Descubre la Magia de <span class="marca">PulserArte</span></h1>
+            <p>Joyas artesanales que capturan la esencia de la elegancia y el encanto. Cada pieza es una obra de arte diseñada para realzar tu belleza única.</p>
+            <a href="#productos" class="btn btn-primario">Explorar Colección</a>
         </div>
     </section>
-    </div>
 
-    <div class="seccion-contenido" id="seccion-proximamente">
-    <section id="proximamente" class="proximamente">
-        <h2>🚀 Próximamente</h2>
-        <p>Nuestra colección <strong>Interstellar 2025</strong> llegará con piezas que desafían la gravedad.</p>
+    <!-- Sección de productos con semántica mejorada -->
+    <section class="seccion" id="productos" aria-labelledby="titulo-productos">
+        <div class="contenedor">
+            <h2 id="titulo-productos" class="titulo-seccion">Nuestras Joyas Exclusivas</h2>
+            <div class="contenedor-productos">
+                <article class="producto" itemscope itemtype="https://schema.org/Product">
+                    <div class="producto-contenedor">
+                        <div class="producto-frente">
+                            <img src="imagenes/g.png" alt="Manilla Corona" itemprop="image">
+                            <h3 itemprop="name">Manilla Corona</h3>
+                            <p itemprop="description">Diseño elegante en oro laminado, ideal para cualquier ocasión.</p>
+                            <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="priceCurrency" content="COP">$</span>
+                                <span itemprop="price" content="95000">95.000</span>
+                            </span>
+                        </div>
+                        <div class="producto-detras">
+                            <h3>Manilla Corona</h3>
+                            <p>Hecha a mano con materiales de la más alta calidad. Perfecta para regalar o consentirte.</p>
+                            <span class="precio">$95.000</span>
+                            <button class="btn btn-secundario">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="producto" itemscope itemtype="https://schema.org/Product">
+                    <div class="producto-contenedor">
+                        <div class="producto-frente">
+                            <img src="imagenes/h.png" alt="Manilla Éclipse" itemprop="image">
+                            <h3 itemprop="name">Manilla Éclipse</h3>
+                            <p itemprop="description">Inspiración galáctica con acabado brillante.</p>
+                            <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="priceCurrency" content="COP">$</span>
+                                <span itemprop="price" content="95000">95.000</span>
+                            </span>
+                        </div>
+                        <div class="producto-detras">
+                            <h3>Manilla Éclipse</h3>
+                            <p>Un diseño único que combina modernidad y tradición. Brilla como las estrellas.</p>
+                            <span class="precio">$95.000</span>
+                            <button class="btn btn-secundario">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="producto" itemscope itemtype="https://schema.org/Product">
+                    <div class="producto-contenedor">
+                        <div class="producto-frente">
+                            <img src="https://images.unsplash.com/photo-1603974372033-9b2150c2dafe?ixlib=rb-4.0.3" alt="Collar Luna" itemprop="image">
+                            <h3 itemprop="name">Collar Luna</h3>
+                            <p itemprop="description">Encanto celestial en plata con detalles dorados.</p>
+                            <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                <span itemprop="priceCurrency" content="COP">$</span>
+                                <span itemprop="price" content="120000">120.000</span>
+                            </span>
+                        </div>
+                        <div class="producto-detras">
+                            <h3>Collar Luna</h3>
+                            <p>Un tributo a la belleza nocturna. Ideal para destacar en eventos especiales.</p>
+                            <span class="precio">$120.000</span>
+                            <button class="btn btn-secundario">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
     </section>
-    </div>
 
-    <div class="seccion-contenido" id="seccion-testimonios">
-    <section id="testimonios" class="testimonios">
-      <h2>❤️ Lo que dicen nuestros clientes</h2>
-      <div class="testimonio">
-        <p>"Las manillas de PulserArte son hermosas, brillan como el oro real. ¡Recomendadas 100%!"</p>
-        <span>- Camila R.</span>
-      </div>
-      <div class="testimonio">
-        <p>"Gran calidad por el precio. Ideal para regalar algo elegante sin gastar una fortuna."</p>
-        <span>- Andrés M.</span>
-      </div>
+    <!-- Sección de testimonios con ARIA -->
+    <section class="seccion testimonios" id="testimonios" aria-labelledby="titulo-testimonios">
+        <div class="contenedor">
+            <h2 id="titulo-testimonios" class="titulo-seccion">Lo que dicen nuestros clientes</h2>
+            <div class="contenedor-testimonios">
+                <div class="carrusel-testimonios" id="carrusel" aria-live="polite">
+                    <div class="testimonio" itemscope itemtype="https://schema.org/Review">
+                        <p itemprop="reviewBody">Las manillas de PulserArte son hermosas, brillan como el oro real. ¡Recomendadas 100%! La calidad superó todas mis expectativas.</p>
+                        <span itemprop="author">- Camila R.</span>
+                    </div>
+                    <div class="testimonio" itemscope itemtype="https://schema.org/Review">
+                        <p itemprop="reviewBody">Gran calidad por el precio. Ideal para regalar algo elegante sin gastar una fortuna. Mi esposa quedó encantada con su regalo.</p>
+                        <span itemprop="author">- Andrés M.</span>
+                    </div>
+                    <div class="testimonio" itemscope itemtype="https://schema.org/Review">
+                        <p itemprop="reviewBody">El servicio al cliente es excepcional. Me ayudaron a elegir la pieza perfecta y llegó antes de lo esperado. ¡Volveré a comprar!</p>
+                        <span itemprop="author">- Laura G.</span>
+                    </div>
+                </div>
+                <div class="controles-carrusel" aria-label="Controles del carrusel">
+                    <button class="control activo" data-index="0" aria-label="Mostrar testimonio 1"></button>
+                    <button class="control" data-index="1" aria-label="Mostrar testimonio 2"></button>
+                    <button class="control" data-index="2" aria-label="Mostrar testimonio 3"></button>
+                </div>
+            </div>
+        </div>
     </section>
-    </div>
 
-    <div class="seccion-contenido" id="seccion-pedido">
-    <section id="pedido" class="pedido">
-      <h2>📩 Realiza tu pedido</h2>
-      <form onsubmit="return enviarPedidoPorWhatsapp();">
-        <input type="text" id="nombre" placeholder="Tu nombre" required>
-        <input type="tel" id="telefono" placeholder="Tu WhatsApp" required>
-        <textarea id="mensaje" placeholder="¿Qué manilla deseas?" required></textarea>
-        <button type="submit">Enviar por WhatsApp</button>
-      </form>
+    <!-- Sección de pedido con formulario accesible -->
+    <section class="seccion" id="pedido" aria-labelledby="titulo-pedido">
+        <div class="contenedor">
+            <h2 id="titulo-pedido" class="titulo-seccion">Realiza tu pedido</h2>
+            <form class="formulario-pedido" id="formulario-pedido" aria-label="Formulario de pedido">
+                <div class="grupo-formulario">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required aria-required="true">
+                </div>
+                <div class="grupo-formulario">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required aria-required="true">
+                </div>
+                <div class="grupo-formulario">
+                    <label for="telefono">Teléfono / WhatsApp</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567" required aria-required="true">
+                </div>
+                <div class="grupo-formulario">
+                    <label for="producto">Producto de interés</label>
+                    <select id="producto" name="producto" required aria-required="true">
+                        <option value="">Selecciona una opción</option>
+                        <option value="Manilla Corona">Manilla Corona - $95.000</option>
+                        <option value="Manilla Éclipse">Manilla Éclipse - $95.000</option>
+                        <option value="Collar Luna">Collar Luna - $120.000</option>
+                    </select>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="mensaje">Mensaje adicional</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="¿Algo más que quieras decirnos?" aria-label="Mensaje adicional"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primario">Enviar Pedido</button>
+            </form>
+        </div>
     </section>
-    </div>
 
-    <div class="seccion-contenido" id="seccion-contacto">
-    <footer id="contacto">
-        &copy; 2025 PulserArte Joyería. Todos los derechos reservados.
+    <!-- Footer con información legal completa -->
+    <footer id="contacto" aria-label="Información de contacto y legal">
+        <div class="olas" aria-hidden="true"></div>
+        <div class="contenedor">
+            <div class="contenido-footer">
+                <div class="columna-footer">
+                    <h3>Sobre Nosotros</h3>
+                    <p>PulserArte es una joyería artesanal especializada en diseños únicos y personalizados que realzan tu belleza natural.</p>
+                    <div class="redes-sociales">
+                        <a href="https://www.instagram.com/tucuenta" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/tucuenta" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/573162283951" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="columna-footer">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+                    <p><i class="fas fa-phone"></i> +57 316 228 3951</p>
+                    <p><i class="fas fa-envelope"></i> info@pulserarte.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes: 9am - 6pm</p>
+                </div>
+                
+                <div class="columna-footer">
+                    <h3>Enlaces Rápidos</h3>
+                    <a href="#" data-target="productos">Nuestra Colección</a>
+                    <a href="#" data-target="testimonios">Opiniones</a>
+                    <a href="#" data-target="pedido">Cómo Pedir</a>
+                    <a href="#" id="politica-privacidad">Política de Privacidad</a>
+                </div>
+                
+                <div class="legal">
+                    <p>© 2025 PulserArte Joyería. Todos los derechos reservados.</p>
+                    <p>
+                        <a href="#" id="terminos-condiciones">Términos y Condiciones</a> | 
+                        <a href="#" id="politica-cookies">Política de Cookies</a> | 
+                        <a href="#" id="aviso-legal">Aviso Legal</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Aviso de Cookies -->
+    <div class="aviso-cookies" id="aviso-cookies" aria-live="polite">
+        <div class="contenedor-cookies">
+            <div class="texto-cookies">
+                <p>Utilizamos cookies propias y de terceros para mejorar nuestros servicios y mostrarle publicidad relacionada con sus preferencias mediante el análisis de sus hábitos de navegación. Al continuar navegando, consideramos que acepta su uso. Puede obtener más información en nuestra <a href="#" id="enlace-politica-cookies">Política de Cookies</a>.</p>
+            </div>
+            <div class="botones-cookies">
+                <button id="aceptar-cookies" class="btn btn-primario">Aceptar Cookies</button>
+                <button id="rechazar-cookies" class="btn btn-secundario">Rechazar</button>
+            </div>
+        </div>
     </div>
 
-</script>
+    <!-- Modales legales (ocultos inicialmente) -->
+    <div id="modal-politica-privacidad" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titulo-modal-privacidad" hidden>
+        <div class="modal-contenido">
+            <h2 id="titulo-modal-privacidad">Política de Privacidad</h2>
+            <div class="modal-texto">
+                <!-- Contenido detallado de la política de privacidad -->
+                <p>En PulserArte Joyería, nos comprometemos a proteger tu privacidad. Esta política explica cómo recopilamos, usamos y protegemos tu información personal.</p>
+                <h3>Información que recopilamos</h3>
+                <p>Recopilamos información que nos proporcionas directamente cuando realizas un pedido, te registras en nuestro sitio o te comunicas con nosotros. Esto puede incluir tu nombre, dirección de correo electrónico, número de teléfono, dirección de envío y detalles de pago.</p>
+                <h3>Cómo usamos tu información</h3>
+                <p>Utilizamos tu información para procesar pedidos, mejorar nuestros servicios, comunicarnos contigo sobre tu pedido y enviarte información sobre nuestros productos y promociones (si nos has dado tu consentimiento).</p>
+                <h3>Protección de datos</h3>
+                <p>Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales contra el acceso no autorizado, alteración, divulgación o destrucción.</p>
+                <h3>Tus derechos</h3>
+                <p>Tienes derecho a acceder, rectificar o eliminar tus datos personales. También puedes oponerte al tratamiento de tus datos o solicitar la limitación de su tratamiento.</p>
+                <p>Para ejercer estos derechos o para cualquier pregunta sobre nuestra política de privacidad, contáctanos en info@pulserarte.com.</p>
+            </div>
+            <button class="btn btn-primario cerrar-modal">Cerrar</button>
+        </div>
+    </div>
 
-<script>
-const toggleBtn = document.getElementById('modo-toggle');
+    <!-- Scripts optimizados -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Pantalla de carga
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelector('.carga').classList.add('oculto');
+                iniciarEfectos();
+                mostrarAvisoCookies();
+            }, 1500);
+        });
 
-// Aplicar el modo guardado si existe
-if (localStorage.getItem('modo-claro') === 'true') {
-  document.body.classList.add('modo-claro');
-  toggleBtn.textContent = '🌙 Modo Noche';
-}
+        // Iniciar todos los efectos después de la carga
+        function iniciarEfectos() {
+            iniciarMenu();
+            iniciarNavegacion();
+            iniciarModoNoche();
+            iniciarCarrusel();
+            iniciarParticulas();
+            iniciarFormulario();
+            iniciarModales();
+            iniciarEfectoEscritura();
+        }
 
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('modo-claro');
-  const activo = document.body.classList.contains('modo-claro');
-  toggleBtn.textContent = activo ? '🌙 Modo Noche' : '🌞 Modo Día';
-  localStorage.setItem('modo-claro', activo);
-});
-</script>
-<script>
-document.querySelectorAll("nav.menu a").forEach(enlace => {
-  enlace.addEventListener("click", e => {
-    e.preventDefault();
-    const objetivo = e.target.dataset.target;
-    document.querySelectorAll(".seccion-contenido").forEach(seccion => {
-      seccion.style.display = "none";
-    });
-    if (objetivo && document.getElementById(objetivo)) {
-      document.getElementById(objetivo).style.display = "block";
-    }
-  });
-});
+        // Menú flotante accesible
+        function iniciarMenu() {
+            const menuBtn = document.getElementById('menu-btn');
+            const menuItems = document.getElementById('menu-items');
 
-// Mostrar solo la primera sección al inicio
-window.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".seccion-contenido").forEach((seccion, idx) => {
-    seccion.style.display = idx === 0 ? "block" : "none";
-  });
-});
-</script>
+            menuBtn.addEventListener('click', function() {
+                const estaAbierto = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !estaAbierto);
+                menuItems.classList.toggle('active');
+                
+                const icono = this.querySelector('i');
+                icono.classList.toggle('fa-gem');
+                icono.classList.toggle('fa-times');
+            });
 
-<div class="redes-sociales-global">
-    <p>Síguenos en nuestras x redes:</p>
-    <ul class="iconos-redes">
-        <li><a href="https://www.instagram.com/tucuenta" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="32" height="32"></a></li>
-        <li><a href="https://www.facebook.com/tucuenta" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="32" height="32"></a></li>
-        <li><a href="https://wa.me/573162283951" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="32" height="32"></a></li>
-    </ul>
-</div>
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (!menuBtn.contains(e.target)) {
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuItems.classList.remove('active');
+                    menuBtn.querySelector('i').classList.remove('fa-times');
+                    menuBtn.querySelector('i').classList.add('fa-gem');
+                }
+            });
+        }
+
+        // Navegación suave accesible
+        function iniciarNavegacion() {
+            document.querySelectorAll('[data-target]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.tagName === 'A') {
+                        e.preventDefault();
+                        const target = this.getAttribute('data-target');
+                        const element = document.getElementById(target);
+                        
+                        if (element) {
+                            element.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            
+                            // Cerrar menú si está abierto
+                            const menuBtn = document.getElementById('menu-btn');
+                            if (menuBtn.getAttribute('aria-expanded') === 'true') {
+                                menuBtn.click();
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+        // Modo noche mejorado
+        function iniciarModoNoche() {
+            const modoToggle = document.getElementById('modo-toggle');
+            const iconoModo = modoToggle.querySelector('i');
+            
+            // Verificar preferencia del sistema y localStorage
+            const prefiereOscuro = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const modoGuardado = localStorage.getItem('modo-noche');
+            
+            if (modoGuardado === 'true' || (!modoGuardado && prefiereOscuro)) {
+                document.body.classList.add('modo-noche');
+                iconoModo.classList.remove('fa-moon');
+                iconoModo.classList.add('fa-sun');
+            }
+            
+            modoToggle.addEventListener('click', function() {
+                document.body.classList.toggle('modo-noche');
+                const esModoNoche = document.body.classList.contains('modo-noche');
+                
+                // Cambiar ícono y texto accesible
+                const icono = this.querySelector('i');
+                if (esModoNoche) {
+                    icono.classList.remove('fa-moon');
+                    icono.classList.add('fa-sun');
+                    this.setAttribute('aria-label', 'Cambiar a modo día');
+                } else {
+                    icono.classList.remove('fa-sun');
+                    icono.classList.add('fa-moon');
+                    this.setAttribute('aria-label', 'Cambiar a modo noche');
+                }
+                
+                localStorage.setItem('modo-noche', esModoNoche);
+            });
+        }
+
+        // Carrusel de testimonios accesible
+        function iniciarCarrusel() {
+            const carrusel = document.getElementById('carrusel');
+            const controles = document.querySelectorAll('.control');
+            let currentIndex = 0;
+            let intervalo;
+            
+            function actualizarCarrusel(index) {
+                currentIndex = index;
+                const testimonio = carrusel.children[index];
+                
+                carrusel.scrollTo({
+                    left: testimonio.offsetLeft,
+                    behavior: 'smooth'
+                });
+                
+                // Actualizar controles
+                controles.forEach((control, i) => {
+                    control.classList.toggle('activo', i === index);
+                    control.setAttribute('aria-label', `Mostrar testimonio ${i + 1}`);
+                });
+                
+                // Reiniciar intervalo
+                reiniciarIntervalo();
+            }
+            
+            function reiniciarIntervalo() {
+                clearInterval(intervalo);
+                intervalo = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % controles.length;
+                    actualizarCarrusel(currentIndex);
+                }, 7000);
+            }
+            
+            controles.forEach(control => {
+                control.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    actualizarCarrusel(index);
+                });
+                
+                // Hacer controles accesibles por teclado
+                control.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const index = parseInt(this.getAttribute('data-index'));
+                        actualizarCarrusel(index);
+                    }
+                });
+            });
+            
+            // Iniciar auto-avance
+            reiniciarIntervalo();
+            
+            // Pausar al interactuar
+            carrusel.addEventListener('mouseenter', () => clearInterval(intervalo));
+            carrusel.addEventListener('mouseleave', reiniciarIntervalo);
+            carrusel.addEventListener('focusin', () => clearInterval(intervalo));
+            carrusel.addEventListener('focusout', reiniciarIntervalo);
+        }
+
+        // Efecto de partículas para modo noche
+        function iniciarParticulas() {
+            if (document.getElementById('particles-js')) {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 60,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#d4af37"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.5,
+                            "random": true,
+                            "anim": {
+                                "enable": false
+                            }
+                        },
+                        "size": {
+                            "value": 3,
+                            "random": true,
+                            "anim": {
+                                "enable": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 150,
+                            "color": "#d4af37",
+                            "opacity": 0.2,
+                            "width": 1
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 1.5,
+                            "direction": "none",
+                            "random": true,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "grab"
+                            },
+                            "onclick": {
+                                "enable": true,
+                                "mode": "push"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 140,
+                                "line_linked": {
+                                    "opacity": 0.5
+                                }
+                            },
+                            "push": {
+                                "particles_nb": 3
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            }
+        }
+
+        // Formulario de pedido con validación
+        function iniciarFormulario() {
+            const formulario = document.getElementById('formulario-pedido');
+            
+            if (formulario) {
+                formulario.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validación básica
+                    const nombre = document.getElementById('nombre').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const telefono = document.getElementById('telefono').value.trim();
+                    const producto = document.getElementById('producto').value;
+                    
+                    if (!nombre || !email || !telefono || !producto) {
+                        alert('Por favor completa todos los campos requeridos.');
+                        return;
+                    }
+                    
+                    // Crear mensaje para WhatsApp
+                    const mensaje = document.getElementById('mensaje').value.trim();
+                    const texto = `Hola PulserArte, soy ${nombre}. Estoy interesado en: ${producto}. ${mensaje ? 'Mensaje adicional: ' + mensaje : ''}`;
+                    const urlWhatsapp = `https://wa.me/573162283951?text=${encodeURIComponent(texto)}`;
+                    
+                    // Abrir WhatsApp
+                    window.open(urlWhatsapp, '_blank');
+                    
+                    // Efecto de confeti
+                    crearConfeti();
+                    
+                    // Resetear formulario
+                    formulario.reset();
+                    
+                    // Feedback para el usuario
+                    alert('¡Gracias por tu interés! Serás redirigido a WhatsApp para completar tu pedido.');
+                });
+            }
+        }
+
+        // Efecto de confeti mejorado
+        function crearConfeti() {
+            const colores = ['#d4af37', '#ffffff', '#f8f1e5', '#1a1a2e'];
+            const formas = ['circle', 'rect', 'triangle'];
+            
+            for (let i = 0; i < 120; i++) {
+                const confeti = document.createElement('div');
+                confeti.className = 'confeti';
+                
+                // Posición aleatoria
+                confeti.style.left = Math.random() * 100 + 'vw';
+                
+                // Color aleatorio
+                confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+                
+                // Tamaño aleatorio
+                const tamaño = Math.random() * 10 + 5;
+                confeti.style.width = tamaño + 'px';
+                confeti.style.height = tamaño + 'px';
+                
+                // Forma aleatoria
+                const forma = formas[Math.floor(Math.random() * formas.length)];
+                if (forma === 'circle') {
+                    confeti.style.borderRadius = '50%';
+                } else if (forma === 'triangle') {
+                    confeti.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+                }
+                
+                // Animación con parámetros aleatorios
+                confeti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confeti.style.animationDelay = Math.random() * 5 + 's';
+                confeti.style.opacity = Math.random() * 0.8 + 0.2;
+                
+                document.body.appendChild(confeti);
+                
+                // Eliminar después de la animación
+                setTimeout(() => {
+                    confeti.remove();
+                }, 7000);
+            }
+        }
+
+        // Aviso de Cookies
+        function mostrarAvisoCookies() {
+            const avisoCookies = document.getElementById('aviso-cookies');
+            const aceptarCookies = document.getElementById('aceptar-cookies');
+            const rechazarCookies = document.getElementById('rechazar-cookies');
+            
+            // Verificar si ya se aceptaron las cookies
+            if (!localStorage.getItem('cookies-aceptadas')) {
+                setTimeout(() => {
+                    avisoCookies.classList.add('mostrar');
+                }, 2000);
+            }
+            
+            // Manejar aceptación de cookies
+            if (aceptarCookies) {
+                aceptarCookies.addEventListener('click', function() {
+                    localStorage.setItem('cookies-aceptadas', 'true');
+                    avisoCookies.classList.remove('mostrar');
+                });
+            }
+            
+            // Manejar rechazo de cookies
+            if (rechazarCookies) {
+                rechazarCookies.addEventListener('click', function() {
+                    localStorage.setItem('cookies-aceptadas', 'false');
+                    avisoCookies.classList.remove('mostrar');
+                    // Aquí podrías implementar la lógica para rechazar cookies
+                });
+            }
+        }
+
+        // Modales legales
+        function iniciarModales() {
+            const modalPrivacidad = document.getElementById('modal-politica-privacidad');
+            const enlacePrivacidad = document.getElementById('politica-privacidad');
+            const enlaceCookies = document.getElementById('politica-cookies');
+            const enlaceTerminos = document.getElementById('terminos-condiciones');
+            const enlaceAvisoLegal = document.getElementById('aviso-legal');
+            const enlaceCookiesFooter = document.getElementById('enlace-politica-cookies');
+            
+            // Función para abrir modal
+            function abrirModal(modal) {
+                modal.removeAttribute('hidden');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                
+                // Enfocar el primer elemento interactivo del modal
+                const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                if (focusable) focusable.focus();
+            }
+            
+            // Función para cerrar modal
+            function cerrarModal(modal) {
+                modal.setAttribute('hidden', 'true');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+            
+            // Eventos para abrir modales
+            if (enlacePrivacidad) {
+                enlacePrivacidad.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    abrirModal(modalPrivacidad);
+                });
+            }
+            
+            // Eventos para cerrar modales
+            document.querySelectorAll('.cerrar-modal').forEach(boton => {
+                boton.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    cerrarModal(modal);
+                });
+            });
+            
+            // Cerrar al hacer clic fuera del modal
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        cerrarModal(this);
+                    }
+                });
+            });
+            
+            // Cerrar con tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        if (modal.getAttribute('aria-hidden') === 'false') {
+                            cerrarModal(modal);
+                        }
+                    });
+                }
+            });
+        }
+
+        // Efecto de escritura en el hero
+        function iniciarEfectoEscritura() {
+            const titulo = document.querySelector('.hero h1');
+            if (!titulo) return;
+            
+            const textoOriginal = titulo.textContent;
+            titulo.textContent = '';
+            titulo.style.minHeight = getComputedStyle(titulo).height;
+            
+            let i = 0;
+            const velocidad = 100; // ms entre caracteres
+            
+            function typeWriter() {
+                if (i < textoOriginal.length) {
+                    titulo.textContent += textoOriginal.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, velocidad);
+                }
+            }
+            
+            // Iniciar efecto después de la carga
+            setTimeout(typeWriter, 1500);
+        }
+    </script>
 </body>
 </html>
