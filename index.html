@@ -401,19 +401,13 @@
             position: relative;
             width: 100%;
             height: 18rem;
-            transform-style: preserve-3d;
             transition: transform 0.8s;
-        }
-
-        .producto:hover .producto-contenedor {
-            transform: rotateY(180deg);
         }
 
         .producto-frente, .producto-detras {
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -422,7 +416,6 @@
         }
 
         .producto-detras {
-            transform: rotateY(180deg);
             background: var(--color-primario);
             color: var(--color-secundario);
             border-radius: var(--radio-borde);
@@ -973,63 +966,41 @@
             <div class="contenedor-productos">
                 <article class="producto" itemscope itemtype="https://schema.org/Product">
                     <div class="producto-contenedor">
-                        <div class="producto-frente">
-                            <img src="imagenes/" alt="Manilla Corona" itemprop="image">
-                            <h3 itemprop="name">Manilla Corona</h3>
-                            <p itemprop="description">Diseño elegante en oro laminado, ideal para cualquier ocasión.</p>
-                            <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                                <span itemprop="priceCurrency" content="COP">$</span>
-                                <span itemprop="price" content="95000">95.000</span>
-                            </span>
-                        </div>
                         <div class="producto-detras">
-                            <h3>Manilla Corona</h3>
-                            <p>Hecha a mano con materiales de la más alta calidad. Perfecta para regalar o consentirte.</p>
-                            <span class="precio">$95.000</span>
-                            <button class="btn btn-secundario">Añadir al carrito</button>
+                            <a class="zoomable" href="#">
+                                <img src="imagenes/g.png" alt="Pulsera Religiosa" style="width: 100%; height: 100%; object-fit: cover;">
+                                <h3 style="font-size: 1.2rem; margin: 0.5rem 0;">Pulsera Religiosa</h3>
+                            </a>
                         </div>
                     </div>
                 </article>
                 
                 <article class="producto" itemscope itemtype="https://schema.org/Product">
                     <div class="producto-contenedor">
-                        <div class="producto-frente">
-                            <img src="imagenes/" alt="Manilla Éclipse" itemprop="image">
-                            <h3 itemprop="name">Manilla Éclipse</h3>
-                            <p itemprop="description">Inspiración galáctica con acabado brillante.</p>
-                            <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                                <span itemprop="priceCurrency" content="COP">$</span>
-                                <span itemprop="price" content="95000">95.000</span>
-                            </span>
-                        </div>
                         <div class="producto-detras">
-                            <h3>Manilla Éclipse</h3>
-                            <p>Un diseño único que combina modernidad y tradición. Brilla como las estrellas.</p>
-                            <span class="precio">$95.000</span>
-                            <button class="btn btn-secundario">Añadir al carrito</button>
+                            <a class="zoomable" href="#">
+                                <img src="imagenes/h.png" alt="Manilla Éclipse" />
+                                <h3>Manilla Éclipse</h3>
+                            </a>
                         </div>
                     </div>
                 </article>
                 
                 <article class="producto" itemscope itemtype="https://schema.org/Product">
                     <div class="producto-contenedor">
-                        <div class="producto-frente">
-                            <img src="https://images.unsplash.com/photo-1603974372033-9b2150c2dafe?ixlib=rb-4.0.3" alt="Collar Luna" itemprop="image">
-                            <h3 itemprop="name">Collar Luna</h3>
-                            <p itemprop="description">Encanto celestial en plata con detalles dorados.</p>
-                            <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                                <span itemprop="priceCurrency" content="COP">$</span>
-                                
-                            </span>
-                        </div>
                         <div class="producto-detras">
-                            <h3>Collar Luna</h3>
-                            <p>Un tributo a la belleza nocturna. Ideal para destacar en eventos especiales.</p>
-                            
-                            <button class="btn btn-secundario">Añadir al carrito</button>
+                            <a class="zoomable" href="#">
+                                <img src="imagenes/i.png" alt="Pulsera perzonalizadas" />
+                                <h3>Pulsera Perzonalizadas</h3>
+                            </a>
                         </div>
                     </div>
                 </article>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="imagenes/catalogo.pdf" download class="btn btn-secundario" style="font-size: 1rem;">
+                    <i class="fas fa-file-download" style="margin-right: 0.5rem;"></i> Descargar Catálogo PDF
+                </a>
             </div>
         </div>
     </section>
@@ -1156,6 +1127,31 @@
             <button class="btn btn-primario cerrar-modal">Cerrar</button>
         </div>
     </div>
+
+    <!-- Modal de imagen ampliada -->
+    <div id="modalImagen" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
+        <img id="imagenAmpliada" src="" alt="Vista ampliada" style="max-width:90%; max-height:90%; border-radius:12px; box-shadow:0 0 20px rgba(212,175,55,0.7);">
+    </div>
+
+    <script>
+      document.querySelectorAll('.zoomable').forEach(link => {
+          link.style.cursor = 'zoom-in';
+          link.addEventListener('click', function(e) {
+              e.preventDefault();
+              // Buscar la imagen dentro del enlace
+              const img = this.querySelector('img');
+              if (!img) return;
+              const modal = document.getElementById('modalImagen');
+              const imagenAmpliada = document.getElementById('imagenAmpliada');
+              imagenAmpliada.src = img.src;
+              modal.style.display = 'flex';
+          });
+      });
+
+      document.getElementById('modalImagen').addEventListener('click', function() {
+          this.style.display = 'none';
+      });
+    </script>
 
     <!-- Scripts optimizados -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
