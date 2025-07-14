@@ -1083,9 +1083,9 @@
                     <label for="producto">Producto de interés</label>
                     <select id="producto" name="producto" required aria-required="true">
                         <option value="">Selecciona una opción</option>
-                        <option value="Manilla Corona">Manilla Corona - $95.000</option>
-                        <option value="Manilla Éclipse">Manilla Éclipse - $95.000</option>
-                        <option value="Collar Luna">Collar Luna - $120.000</option>
+                        <option value="Manilla Corona">Manilla Corona </option>
+                        <option value="Manilla Éclipse">Manilla Éclipse </option>
+                        <option value="Collar Luna">Collar Luna </option>
                     </select>
                 </div>
                 <div class="grupo-formulario">
@@ -1106,7 +1106,7 @@
                     <h3>Sobre Nosotros</h3>
                     <p>PulserArte es una joyería artesanal especializada en diseños únicos y personalizados que realzan tu belleza natural.</p>
                     <div class="redes-sociales">
-                        <a href="https://www.instagram.com/tucuenta" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                       <a href="https://www.instagram.com/pulserartewf/?igsh=MXVqOGJ3amNieTBocw%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/tucuenta" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://wa.me/573162283951" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
@@ -1114,7 +1114,7 @@
                 
                 <div class="columna-footer">
                     <h3>Contacto</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Palmira, Valle del cauca </p>
                     <p><i class="fas fa-phone"></i> +57 316 228 3951</p>
                     <p><i class="fas fa-envelope"></i> info@pulserarte.com</p>
                     <p><i class="fas fa-clock"></i> Lunes a Viernes: 9am - 6pm</p>
@@ -1448,10 +1448,11 @@
                     }
                     
                     // Crear mensaje para WhatsApp
-                    const mensaje = document.getElementById('mensaje').value.trim();
-                    const texto = `Hola PulserArte, soy ${nombre}. Estoy interesado en: ${producto}. ${mensaje ? 'Mensaje adicional: ' + mensaje : ''}`;
-                    const urlWhatsapp = `https://wa.me/573162283951?text=${encodeURIComponent(texto)}`;
-                    
+                    const  texto = `Hola PulserArte, soy ${nombre}.
+📧                   Correo: ${email}
+                     📱 Teléfono: ${telefono}
+💍 Producto de interés: ${producto}
+📝 Mensaje adicional: ${mensaje || 'Sin mensaje adicional'}`;
                     // Abrir WhatsApp
                     window.open(urlWhatsapp, '_blank');
                     
