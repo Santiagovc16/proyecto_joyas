@@ -1019,13 +1019,13 @@
                             <p itemprop="description">Encanto celestial en plata con detalles dorados.</p>
                             <span class="precio" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                                 <span itemprop="priceCurrency" content="COP">$</span>
-                                <span itemprop="price" content="120000">120.000</span>
+                                
                             </span>
                         </div>
                         <div class="producto-detras">
                             <h3>Collar Luna</h3>
                             <p>Un tributo a la belleza nocturna. Ideal para destacar en eventos especiales.</p>
-                            <span class="precio">$120.000</span>
+                            
                             <button class="btn btn-secundario">Añadir al carrito</button>
                         </div>
                     </div>
@@ -1072,25 +1072,8 @@
                     <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required aria-required="true">
                 </div>
                 <div class="grupo-formulario">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="tu@email.com" required aria-required="true">
-                </div>
-                <div class="grupo-formulario">
-                    <label for="telefono">Teléfono / WhatsApp</label>
+                    <label for="telefono">WhatsApp</label>
                     <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567" required aria-required="true">
-                </div>
-                <div class="grupo-formulario">
-                    <label for="producto">Producto de interés</label>
-                    <select id="producto" name="producto" required aria-required="true">
-                        <option value="">Selecciona una opción</option>
-                        <option value="Manilla Corona">Manilla Corona </option>
-                        <option value="Manilla Éclipse">Manilla Éclipse </option>
-                        <option value="Collar Luna">Collar Luna </option>
-                    </select>
-                </div>
-                <div class="grupo-formulario">
-                    <label for="mensaje">Mensaje adicional</label>
-                    <textarea id="mensaje" name="mensaje" placeholder="¿Algo más que quieras decirnos?" aria-label="Mensaje adicional"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primario">Enviar Pedido</button>
             </form>
@@ -1428,42 +1411,28 @@
             }
         }
 
-        // Formulario de pedido con validación
+        // Formulario de pedido reducido y envío directo a WhatsApp
         function iniciarFormulario() {
             const formulario = document.getElementById('formulario-pedido');
-            
             if (formulario) {
                 formulario.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Validación básica
                     const nombre = document.getElementById('nombre').value.trim();
-                    const email = document.getElementById('email').value.trim();
                     const telefono = document.getElementById('telefono').value.trim();
-                    const producto = document.getElementById('producto').value;
-                    
-                    if (!nombre || !email || !telefono || !producto) {
-                        alert('Por favor completa todos los campos requeridos.');
+
+                    if (!nombre || !telefono) {
+                        alert('Por favor completa todos los campos.');
                         return;
                     }
-                    
-                    // Crear mensaje para WhatsApp
-                    const  texto = `Hola PulserArte, soy ${nombre}.
-📧                   Correo: ${email}
-                     📱 Teléfono: ${telefono}
-💍 Producto de interés: ${producto}
-📝 Mensaje adicional: ${mensaje || 'Sin mensaje adicional'}`;
-                    // Abrir WhatsApp
+
+                    const mensaje = `Hola PulserArte, soy ${nombre}. Me gustaría realizar un pedido. Este es mi número de WhatsApp: ${telefono}`;
+                    const urlWhatsapp = `https://wa.me/573162283951?text=${encodeURIComponent(mensaje)}`;
                     window.open(urlWhatsapp, '_blank');
-                    
-                    // Efecto de confeti
+
                     crearConfeti();
-                    
-                    // Resetear formulario
                     formulario.reset();
-                    
-                    // Feedback para el usuario
-                    alert('¡Gracias por tu interés! Serás redirigido a WhatsApp para completar tu pedido.');
+                    alert('¡Gracias por tu interés! Serás redirigido a WhatsApp para continuar el pedido.');
                 });
             }
         }
